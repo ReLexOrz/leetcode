@@ -1,5 +1,4 @@
-# leetcode
-golang语言的LeetCode解法练习
+# golang语言的LeetCode解法练习
 
 + 运行方法
 
