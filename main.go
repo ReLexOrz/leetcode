@@ -1,8 +1,6 @@
 package main
 
-import (
-	"LeetCode/logic"
-)
+import "LeetCodeTest/logic"
 
 func main() {
 	println("LeetCode Res")
