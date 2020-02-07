@@ -1,7 +1,8 @@
 # leetcode
 golang语言的LeetCode解法练习
 
-运行方法
++ 运行方法
+
 在gopath下src目录里创建LeetCodeTest文件夹
 
 $GOPATH/src/LeetCodeTest
