@@ -1,6 +1,9 @@
 package logic
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 /*
 给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
@@ -37,31 +40,14 @@ func TestReverse() {
 func reverse(x int) int {
 	//处理特情
 	res := 0
-	if x == 0 || x < -2147483648 || x > 2147483648 {
-		return res
-	}
-	isNeg := false
-	if x < 0 {
-		isNeg = true
-		x = 0 - x
-	}
 	//直接解法
 	//从第一位循环直到模为0则停止退出
-	nRem := 0
-	for {
-		nRem = x % 10
-		res = res*10 + nRem
-		x = x / 10
-		if x == 0 {
-			break
+	for x != 0 {
+		res = res*10 + x%10
+		if res > math.MaxInt32 || res < math.MinInt32 {
+			return 0
 		}
-	}
-	//出关也不能超出题干范围
-	if res > 2147483648 {
-		return 0
-	}
-	if isNeg {
-		res = 0 - res
+		x = x / 10 //除法尽量后移
 	}
 	return res
 }
