@@ -24,11 +24,11 @@ import "fmt"
 func TestTwoSum() {
 	nums := []int{2, 7, 11, 15}
 	target := 9
-	fmt.Println("TestTowSum Input:")
+	fmt.Println("#1 TestTowSum Input:")
 	fmt.Println(nums)
 	fmt.Println(target)
 	res := twoSum(nums, target)
-	fmt.Println("TestTowSum Res:")
+	fmt.Println("#1 TestTowSum Res:")
 	fmt.Println(res)
 }
 

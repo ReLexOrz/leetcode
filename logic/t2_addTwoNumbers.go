@@ -49,11 +49,11 @@ func TestAddTwoNumbers() {
 		Val:  5,
 		Next: l2B,
 	}
-	fmt.Println("addTwoNumbers Input:")
+	fmt.Println("#2 TestAddTwoNumbers Input:")
 	PrintListNode(l1A)
 	PrintListNode(l2A)
 	res := addTwoNumbers(l1A, l2A)
-	fmt.Println("addTwoNumbers Res:")
+	fmt.Println("#2 TestAddTwoNumbers Res:")
 	PrintListNode(res)
 }
 

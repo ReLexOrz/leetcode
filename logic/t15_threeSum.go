@@ -28,10 +28,10 @@ import "fmt"
 //TestThreeSum 测试 #2两数相加
 func TestThreeSum() {
 	nums := []int{-1, 0, 1, 2, -1, -4}
-	fmt.Println("TestThreeSum Input:")
+	fmt.Println("#15 TestThreeSum Input:")
 	fmt.Println(nums)
 	res := threeSum(nums)
-	fmt.Println("TestThreeSum Res:")
+	fmt.Println("#15 TestThreeSum Res:")
 	fmt.Println(res)
 }
 
