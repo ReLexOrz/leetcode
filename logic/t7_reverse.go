@@ -6,6 +6,7 @@ import (
 )
 
 /*
+#7 整数反转
 给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
 
 示例 1:
@@ -28,6 +29,8 @@ import (
 链接：https://leetcode-cn.com/problems/reverse-integer
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
+
+//TestReverse 测试 整数反转
 func TestReverse() {
 	num := -1534236469
 	fmt.Println("#7 TestReverse Input:")
