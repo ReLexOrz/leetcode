@@ -30,7 +30,7 @@ import (
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-//TestReverse 测试 整数反转
+//TestReverse 测试 #7整数反转
 func TestReverse() {
 	num := -1534236469
 	fmt.Println("#7 TestReverse Input:")

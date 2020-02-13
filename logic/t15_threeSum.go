@@ -25,7 +25,7 @@ import "fmt"
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-//TestThreeSum 测试 #2两数相加
+//TestThreeSum 测试 #15三数之和
 func TestThreeSum() {
 	nums := []int{-1, 0, 1, 2, -1, -4}
 	fmt.Println("#15 TestThreeSum Input:")
