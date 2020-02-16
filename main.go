@@ -16,11 +16,12 @@ func main() {
 	funcMap[3] = logic.TestLengthOfLongestSubstring
 	funcMap[4] = logic.TestFindMedianSortedArrays
 	funcMap[5] = logic.TestLongestPalindrome
+	funcMap[6] = logic.TestConvertStrToZ
 	funcMap[7] = logic.TestReverse
 	funcMap[15] = logic.TestThreeSum
 
 	//输入你想运行的测试题编号即可返回测试用例
-	testNum := 5
+	testNum := 6
 	fn, ok := funcMap[testNum]
 	if ok {
 		fn()
