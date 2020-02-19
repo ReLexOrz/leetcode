@@ -113,10 +113,8 @@ func myAtoi(str string) int {
 			if resNum > math.MaxInt32 {
 				if isNeg {
 					return math.MinInt32
-				} else {
-					return math.MaxInt32
 				}
-
+				return math.MaxInt32
 			}
 		} else {
 			break
@@ -127,12 +125,5 @@ func myAtoi(str string) int {
 	if isNeg {
 		resNum = 0 - resNum
 	}
-	if resNum > math.MaxInt32 {
-		return math.MaxInt32
-	}
-	if resNum < math.MinInt32 {
-		return math.MinInt32
-	}
-
 	return resNum
 }
