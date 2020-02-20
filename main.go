@@ -20,10 +20,11 @@ func main() {
 	funcMap[7] = logic.TestReverse
 	funcMap[8] = logic.TestMyAtoi
 	funcMap[9] = logic.TestIsPalindrome
+	funcMap[10] = logic.TeatIsMatch
 	funcMap[15] = logic.TestThreeSum
 
 	//输入你想运行的测试题编号即可返回测试用例
-	testNum := 9
+	testNum := 10
 	fn, ok := funcMap[testNum]
 	if ok {
 		fn()
