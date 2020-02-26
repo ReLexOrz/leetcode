@@ -25,16 +25,16 @@ import (
 //TestMaxArea 测试 #11盛最多水的容器
 func TestMaxArea() {
 	nums := []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
-	fmt.Println("#7 TestMaxArea Input:")
+	fmt.Println("#11 TestMaxArea Input:")
 	fmt.Println(nums)
 	res := maxArea(nums)
-	fmt.Println("#7 TestMaxArea Res:")
+	fmt.Println("#11 TestMaxArea Res:")
 	fmt.Println(res)
 }
 
 func maxArea(height []int) int {
-	//让水不断上升 排除两边的边界数字时记录水容量
 	wMaxVol := 0
+	//双边界向内扫描
 	for i, j := 0, len(height)-1; i < j; {
 		minH := 0
 		if height[i] >= height[j] {
@@ -47,6 +47,8 @@ func maxArea(height []int) int {
 			wMaxVol = vol
 		}
 
+		//比较矮的一边进行丢弃
+		//如果都一样 另一边也可以早早弃了 肯定不如原来结果大 不费劲了
 		if minH == height[j] {
 			j--
 		}

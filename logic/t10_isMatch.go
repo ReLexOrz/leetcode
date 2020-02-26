@@ -58,11 +58,11 @@ p = "mis*is*p*."
 func TeatIsMatch() {
 	s := "bbbba"
 	p := ".*a*a"
-	fmt.Println("#9 TeatIsMatch Input:")
+	fmt.Println("#10 TeatIsMatch Input:")
 	fmt.Println(s)
 	fmt.Println(p)
 	res := isMatch2(s, p)
-	fmt.Println("#9 TeatIsMatch Res:")
+	fmt.Println("#10 TeatIsMatch Res:")
 	fmt.Println(res)
 }
 
