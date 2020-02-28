@@ -23,10 +23,11 @@ func main() {
 	funcMap[10] = logic.TeatIsMatch
 	funcMap[11] = logic.TestMaxArea
 	funcMap[12] = logic.TestIntToRoman
+	funcMap[13] = logic.TestRomanToInt
 	funcMap[15] = logic.TestThreeSum
 
 	//输入你想运行的测试题编号即可返回测试用例
-	testNum := 12
+	testNum := 13
 	fn, ok := funcMap[testNum]
 	if ok {
 		fn()
