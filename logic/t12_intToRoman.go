@@ -53,7 +53,7 @@ C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
 
 //TestIntToRoman 测试 #12整数转罗马数字
 func TestIntToRoman() {
-	num := 0
+	num := 1994
 	fmt.Println("#12 TestIntToRoman Input:")
 	fmt.Println(num)
 	res := intToRoman(num)
@@ -61,21 +61,110 @@ func TestIntToRoman() {
 	fmt.Println(res)
 }
 
+//优化算法 直接枚举关键数字
 func intToRoman(num int) string {
+	// 把阿拉伯数字与罗马数字可能出现的所有情况和对应关系，放在两个数组中
+	// 并且按照阿拉伯数字的大小降序排列，这是贪心选择思想
+	nums := []int{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1}
+	romans := []string{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"}
+	res := ""
+	for i := 0; i < 13; i++ {
+		for num >= nums[i] {
+			res = res + romans[i]
+			num -= nums[i]
+		}
+	}
+	return res
+}
+
+func intToRoman2(num int) string {
 	//从千位开始进行分析
-	//tNum := num / 1000
+	resStr := ""
+	num1000 := num / 1000
+	resStr = make1000(num1000, resStr)
+	num = num % 1000
 
-	return ""
+	num100 := num / 100
+	resStr = make100(num100, resStr)
+	num = num % 100
+
+	num10 := num / 10
+	resStr = make10(num10, resStr)
+	num = num % 10
+
+	resStr = make1(num, resStr)
+
+	return resStr
 }
 
-func makeI() {
-
+func make1(num int, res string) string {
+	if num <= 3 {
+		for i := 0; i < num; i++ {
+			res = res + "I"
+		}
+	}
+	if num == 4 {
+		res = res + "IV"
+	}
+	if num > 4 && num <= 8 {
+		res = res + "V"
+		for i := 0; i < num-5; i++ {
+			res = res + "I"
+		}
+	}
+	if num == 9 {
+		res = res + "IX"
+	}
+	return res
 }
 
-func makeV() {
-
+func make10(num int, res string) string {
+	if num <= 3 {
+		for i := 0; i < num; i++ {
+			res = res + "X"
+		}
+	}
+	if num == 4 {
+		res = res + "XL"
+	}
+	if num > 4 && num <= 8 {
+		res = res + "L"
+		for i := 0; i < num-5; i++ {
+			res = res + "X"
+		}
+	}
+	if num == 9 {
+		res = res + "XC"
+	}
+	return res
 }
 
-func makeX() {
+func make100(num int, res string) string {
+	if num <= 3 {
+		for i := 0; i < num; i++ {
+			res = res + "C"
+		}
+	}
+	if num == 4 {
+		res = res + "CD"
+	}
+	if num > 4 && num <= 8 {
+		res = res + "D"
+		for i := 0; i < num-5; i++ {
+			res = res + "C"
+		}
+	}
+	if num == 9 {
+		res = res + "CM"
+	}
+	return res
+}
 
+func make1000(num int, res string) string {
+	if num <= 3 {
+		for i := 0; i < num; i++ {
+			res = res + "M"
+		}
+	}
+	return res
 }
