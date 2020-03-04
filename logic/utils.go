@@ -24,3 +24,34 @@ func PrintListNode(ln *ListNode) {
 	}
 	fmt.Println(resStr)
 }
+
+//快速排序
+func QuickSort(arr []int, startIndex, endIndex int) {
+	if startIndex >= endIndex {
+		return
+	}
+	pivotIndex := partition(arr, startIndex, endIndex)
+	QuickSort(arr, startIndex, pivotIndex-1)
+	QuickSort(arr, pivotIndex+1, endIndex)
+}
+
+func partition(arr []int, startIndex, endIndex int) int {
+	var (
+		pivot = arr[startIndex]
+		left  = startIndex
+		right = endIndex
+	)
+	for left != right {
+		for left < right && pivot < arr[right] {
+			right--
+		}
+		for left < right && pivot >= arr[left] {
+			left++
+		}
+		if left < right {
+			arr[left], arr[right] = arr[right], arr[left]
+		}
+	}
+	arr[startIndex], arr[left] = arr[left], arr[startIndex]
+	return left
+}

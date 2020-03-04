@@ -26,9 +26,10 @@ func main() {
 	funcMap[13] = logic.TestRomanToInt
 	funcMap[14] = logic.TestLongestCommonPrefix
 	funcMap[15] = logic.TestThreeSum
+	funcMap[16] = logic.TestThreeSumClosest
 
 	//输入你想运行的测试题编号即可返回测试用例
-	testNum := 14
+	testNum := 16
 	fn, ok := funcMap[testNum]
 	if ok {
 		fn()
