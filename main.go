@@ -28,9 +28,9 @@ func main() {
 	funcMap[15] = logic.TestThreeSum
 	funcMap[16] = logic.TestThreeSumClosest
 	funcMap[17] = logic.TestLetterCombinations
-
+	funcMap[18] = logic.TestFourSum
 	//输入你想运行的测试题编号即可返回测试用例
-	testNum := 17
+	testNum := 18
 	fn, ok := funcMap[testNum]
 	if ok {
 		fn()
