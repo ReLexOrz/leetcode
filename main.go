@@ -32,11 +32,12 @@ func main() {
 	funcMap["#18"] = logic.TestFourSum
 	funcMap["#19"] = logic.TestRemoveNthFromEnd
 	funcMap["#20"] = logic.TestIsValid
+	funcMap["#21"] = logic.TestMergeTwoLists
 	//面试题
 	funcMap["*57_2"] = logic.TestFindContinuousSequence
 
 	//输入你想运行的测试题编号即可返回测试用例
-	testStr := "#20"
+	testStr := "#21"
 	fn, ok := funcMap[testStr]
 	if ok {
 		fn()
