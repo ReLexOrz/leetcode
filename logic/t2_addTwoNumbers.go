@@ -23,7 +23,6 @@ import "fmt"
 
 //TestAddTwoNumbers 测试 #2两数相加
 func TestAddTwoNumbers() {
-
 	l1C := &ListNode{
 		Val:  3,
 		Next: nil,
@@ -64,13 +63,6 @@ func TestAddTwoNumbers() {
  *     Next *ListNode
  * }
  */
-
-//ListNode 用于int单向链表节点
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	carNum := 0
 	po1 := l1

@@ -5,6 +5,12 @@ import (
 	"strconv"
 )
 
+//单向链表单位结构
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
 //PrintListNode 打印int单向列表
 func PrintListNode(ln *ListNode) {
 	//string := strconv.Itoa(int)

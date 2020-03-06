@@ -52,7 +52,6 @@ func findContinuousSequence(target int) [][]int {
 			end++
 		}
 	}
-
 	return resList
 }
 
