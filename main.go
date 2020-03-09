@@ -34,11 +34,13 @@ func main() {
 	funcMap["#20"] = logic.TestIsValid
 	funcMap["#21"] = logic.TestMergeTwoLists
 	funcMap["#22"] = logic.TestGenerateParenthesis
+	funcMap["#23"] = logic.TestMergeKLists
+	funcMap["#24"] = logic.TestSwapPairs
 	//面试题
 	funcMap["*57_2"] = logic.TestFindContinuousSequence
 
 	//输入你想运行的测试题编号即可返回测试用例
-	testStr := "#22"
+	testStr := "#24"
 	fn, ok := funcMap[testStr]
 	if ok {
 		fn()

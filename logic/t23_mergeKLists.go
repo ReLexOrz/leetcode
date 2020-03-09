@@ -3,22 +3,26 @@ package logic
 import "fmt"
 
 /*
-#21 合并两个有序链表
-将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
+#23 合并K个排序链表
+合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
 
-示例：
+示例:
 
-输入：1->2->4, 1->3->4
-输出：1->1->2->3->4->4
+输入:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+输出: 1->1->2->3->4->4->5->6
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/merge-two-sorted-lists
+链接：https://leetcode-cn.com/problems/merge-k-sorted-lists
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-//TestMergeTwoLists 测试 #21合并两个有序链表
-func TestMergeTwoLists() {
-
+//TestIsValid 测试 #23 合并K个排序链表
+func TestMergeKLists() {
 	l1C := &ListNode{
 		Val:  4,
 		Next: nil,
@@ -48,15 +52,47 @@ func TestMergeTwoLists() {
 		Val:  1,
 		Next: l2B,
 	}
-	fmt.Println("#21 TestAddTwoNumbers Input:")
-	PrintListNode(l1A)
-	PrintListNode(l2A)
-	res := mergeTwoLists(l1A, l2A)
-	fmt.Println("#21 TestAddTwoNumbers Res:")
+
+	lists := []*ListNode{l1A, l2A}
+	fmt.Println("#23 TestMergeKLists Input:")
+	for _, pNode := range lists {
+		PrintListNode(pNode)
+	}
+	res := mergeKLists(lists)
+	fmt.Println("#23 TestMergeKLists Res:")
 	PrintListNode(res)
 }
 
-func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+
+//TODO 普通方法 遍历所有List插入排序
+func mergeKLists(lists []*ListNode) *ListNode {
+
+	//特情
+	if len(lists) == 0 {
+		return nil
+	}
+	if len(lists) == 1 {
+		return lists[0]
+	}
+	//var preNode *ListNode = nil
+	var curNode *ListNode = nil
+	//var startNode *ListNode = nil
+
+	for _, nodeN := range lists {
+		curNode = mergeTwoNodeList(curNode, nodeN)
+	}
+
+	return curNode
+}
+
+func mergeTwoNodeList(l1 *ListNode, l2 *ListNode) *ListNode {
 	//特情
 	if l1 == nil && l2 == nil {
 		return nil
