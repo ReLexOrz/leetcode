@@ -21,10 +21,13 @@ import "fmt"
 
 //TestSwapPairs 测试 #24两两交换链表中的节点
 func TestSwapPairs() {
-
+	lE := &ListNode{
+		Val:  10,
+		Next: nil,
+	}
 	lD := &ListNode{
 		Val:  8,
-		Next: nil,
+		Next: lE,
 	}
 	lC := &ListNode{
 		Val:  4,
@@ -45,7 +48,7 @@ func TestSwapPairs() {
 	PrintListNode(res)
 }
 
-func swapPairs(head *ListNode) *ListNode {
+func swapPairs2(head *ListNode) *ListNode {
 
 	if head == nil {
 		return nil
@@ -53,26 +56,46 @@ func swapPairs(head *ListNode) *ListNode {
 	if head.Next == nil {
 		return head
 	}
-	var startNode *ListNode = head.Next
-	var ppreNode *ListNode = nil
-	var preNode *ListNode = head
-	var curNode *ListNode = head.Next
 
+	var preNode *ListNode = nil
+	var nodeA *ListNode = head
+	var nodeB *ListNode = head.Next
 	for {
-		preNode.Next = curNode.Next
-		curNode.Next = preNode
-		if ppreNode == nil {
-			ppreNode = curNode
+		//交换preNode和curNode
+		nodeA.Next = nodeB.Next
+		nodeB.Next = nodeA
+		if preNode != nil {
+			preNode.Next = nodeB
 		} else {
-			ppreNode.Next = curNode
+			head = nodeB
 		}
-		if preNode.Next == nil {
-			return startNode
+		//跳到下一组
+		if nodeA.Next == nil {
+			return head
 		}
-		if preNode.Next.Next == nil {
-			return startNode
+		if nodeA.Next.Next == nil {
+			return head
 		}
-		curNode = preNode.Next.Next
-		preNode = preNode.Next
+		preNode = nodeA
+		nodeB = nodeA.Next.Next
+		nodeA = nodeA.Next
 	}
+}
+
+//递归
+func swapPairs(head *ListNode) *ListNode {
+	if head == nil {
+		return head
+	}
+	if head.Next == nil {
+		return head
+	}
+
+	var nodeA *ListNode = head
+	var nodeB *ListNode = head.Next
+
+	nodeA.Next = swapPairs(nodeB.Next)
+	nodeB.Next = nodeA
+
+	return nodeB
 }
