@@ -26,6 +26,7 @@ import "fmt"
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
+//TestFourSum 测试 #18 四数之和
 func TestFourSum() {
 	nums := []int{0, 0, 0, 0}
 	target := 0

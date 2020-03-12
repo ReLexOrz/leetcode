@@ -52,7 +52,7 @@ func TestReverseKGroup() {
 		Val:  1,
 		Next: lB,
 	}
-	k := 3
+	k := 4
 	fmt.Println("#25 TestReverseKGroup Input:")
 	PrintListNode(lA)
 	res := reverseKGroup(lA, k)
@@ -61,8 +61,51 @@ func TestReverseKGroup() {
 }
 
 func reverseKGroup(head *ListNode, k int) *ListNode {
-	_, newHead := reverseOneGroup(head)
-	return newHead
+	//特情
+	if head == nil || head.Next == nil {
+		return head
+	}
+	var pre *ListNode = nil    //断后
+	var start *ListNode = head //链表反转开始处
+	var end *ListNode = head   //链表反转结束处
+	var next *ListNode = nil   //前锋
+
+	var newHead *ListNode = nil
+
+	for i := 0; ; {
+		if end.Next == nil {
+			// subEnd, subHead := reverseOneGroup(start)
+			// subEnd.Next = nil
+			if pre == nil {
+				return start
+			}
+			//pre.Next = subHead
+			return newHead
+		}
+		end = end.Next
+		next = end.Next
+		i++
+		if i == k-1 {
+			end.Next = nil
+			subEnd, subHead := reverseOneGroup(start)
+			//处理断后
+			if pre == nil {
+				newHead = subHead
+			} else {
+				pre.Next = subHead
+			}
+			//处理前锋
+			subEnd.Next = next
+			//重新出发
+			if next == nil {
+				return newHead
+			}
+			pre = subEnd
+			start = next
+			end = next
+			i = 0
+		}
+	}
 }
 
 //翻转一段链表
