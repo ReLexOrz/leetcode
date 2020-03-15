@@ -38,14 +38,15 @@ func generateParenthesis(n int) []string {
 	return resList
 }
 
+//AddChar 递归调用追加字符串
 func AddChar(addChar string, curString string, posCount int, naviCount int, resList *[]string, n int) {
 	//统计之前的字符串有多少
 	curString = curString + addChar
 	if addChar == "(" {
-		posCount += 1
+		posCount++
 	}
 	if addChar == ")" {
-		naviCount += 1
+		naviCount++
 	}
 	if posCount > n || naviCount > n {
 		return

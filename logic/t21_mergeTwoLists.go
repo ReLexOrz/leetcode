@@ -69,7 +69,7 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 	}
 
 	//以l1做主链
-	var preNode *ListNode = nil
+	var preNode *ListNode
 	curNode := l1
 	for curNode != nil && l2 != nil {
 		if curNode.Val >= l2.Val {

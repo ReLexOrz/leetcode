@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-//单向链表单位结构
+//ListNode 单向链表单位结构
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -31,7 +31,7 @@ func PrintListNode(ln *ListNode) {
 	fmt.Println(resStr)
 }
 
-//快速排序
+//QuickSort 快速排序
 func QuickSort(arr []int, startIndex, endIndex int) {
 	if startIndex >= endIndex {
 		return

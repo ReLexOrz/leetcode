@@ -48,17 +48,17 @@ func TestIsValid() {
 	fmt.Println(res)
 }
 
-//使用链表做一个堆栈
+//CharNode 使用链表做一个堆栈
 type CharNode struct {
 	Ch   byte
 	Next *CharNode
 }
 
 func isValid(s string) bool {
-	var head *CharNode = nil
+	var head *CharNode
 	for i := 0; i < len(s); i++ {
-		ok, head_ := checkStack(s[i], head)
-		head = head_
+		ok, newHead := checkStack(s[i], head)
+		head = newHead
 		if !ok {
 			return false
 		}

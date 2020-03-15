@@ -21,7 +21,7 @@ import "fmt"
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-//TestIsValid 测试 #23 合并K个排序链表
+//TestMergeKLists 测试 #23 合并K个排序链表
 func TestMergeKLists() {
 	l1C := &ListNode{
 		Val:  4,
@@ -81,9 +81,8 @@ func mergeKLists(lists []*ListNode) *ListNode {
 	if len(lists) == 1 {
 		return lists[0]
 	}
-	//var preNode *ListNode = nil
-	var curNode *ListNode = nil
-	//var startNode *ListNode = nil
+
+	var curNode *ListNode
 
 	for _, nodeN := range lists {
 		curNode = mergeTwoNodeList(curNode, nodeN)
@@ -105,7 +104,7 @@ func mergeTwoNodeList(l1 *ListNode, l2 *ListNode) *ListNode {
 	}
 
 	//以l1做主链
-	var preNode *ListNode = nil
+	var preNode *ListNode
 	curNode := l1
 	for curNode != nil && l2 != nil {
 		if curNode.Val >= l2.Val {

@@ -53,9 +53,9 @@ func swapPairs2(head *ListNode) *ListNode {
 		return head
 	}
 
-	var preNode *ListNode = nil
-	var nodeA *ListNode = head
-	var nodeB *ListNode = head.Next
+	var preNode *ListNode
+	nodeA := head
+	nodeB := head.Next
 	for {
 		//交换preNode和curNode
 		nodeA.Next = nodeB.Next
@@ -87,8 +87,8 @@ func swapPairs(head *ListNode) *ListNode {
 		return head
 	}
 
-	var nodeA *ListNode = head
-	var nodeB *ListNode = head.Next
+	nodeA := head
+	nodeB := head.Next
 
 	nodeA.Next = swapPairs(nodeB.Next)
 	nodeB.Next = nodeA

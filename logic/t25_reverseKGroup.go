@@ -65,12 +65,11 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 	if head == nil || head.Next == nil {
 		return head
 	}
-	var pre *ListNode = nil    //断后
-	var start *ListNode = head //链表反转开始处
-	var end *ListNode = head   //链表反转结束处
-	var next *ListNode = nil   //前锋
-
-	var newHead *ListNode = nil
+	var pre *ListNode  //断后
+	start := head      //链表反转开始处
+	end := head        //链表反转结束处
+	var next *ListNode //前锋
+	var newHead *ListNode
 
 	for i := 0; ; {
 		if end.Next == nil {
