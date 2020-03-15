@@ -24,7 +24,7 @@ import (
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-//TestThreeSumClosest 面试*57 和为s的连续正数序列
+//TestFindContinuousSequence 面试*57 和为s的连续正数序列
 func TestFindContinuousSequence() {
 	target := 9
 	fmt.Println("*57_2 TestFindContinuousSequence Input:")
