@@ -38,11 +38,12 @@ func main() {
 	funcMap["#24"] = logic.TestSwapPairs
 	funcMap["#25"] = logic.TestReverseKGroup
 	funcMap["#26"] = logic.TestRemoveDuplicates
+	funcMap["#27"] = logic.TestRemoveElement
 	//面试题
 	funcMap["*57_2"] = logic.TestFindContinuousSequence
 
 	//输入你想运行的测试题编号即可返回测试用例
-	testStr := "#13"
+	testStr := "#27"
 	fn, ok := funcMap[testStr]
 	if ok {
 		fn()
@@ -50,19 +51,3 @@ func main() {
 		fmt.Println("尚且没有该题目解答")
 	}
 }
-
-// findMap := map[string]int{
-// 	"I":  1,
-// 	"IV": 4,
-// 	"V":  5,
-// 	"IX": 9,
-// 	"X":  10,
-// 	"XL": 40,
-// 	"L":  50,
-// 	"XC": 90,
-// 	"C":  100,
-// 	"CD": 400,
-// 	"D":  500,
-// 	"CM": 900,
-// 	"M":  1000,
-// }
