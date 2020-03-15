@@ -53,9 +53,9 @@ C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
 
 */
 
-//TestIntToRoman 测试 #13罗马数字转整数
+//TestRomanToInt 测试 #13罗马数字转整数
 func TestRomanToInt() {
-	s := "VIII"
+	s := "MMMXLV"
 	fmt.Println("#13 TestRomanToInt Input:")
 	fmt.Println(s)
 	res := romanToInt(s)
@@ -63,7 +63,129 @@ func TestRomanToInt() {
 	fmt.Println(res)
 }
 
-func romanToInt(s string) int {
+func romanToInt2(s string) int {
+	res := 0
+	sLen := len(s)
 
-	return 0
+	for i := sLen - 1; i >= 0; {
+		if s[i] == 'I' {
+			res = res + 1
+			i--
+			continue
+		}
+		if s[i] == 'V' {
+			if (i-1) >= 0 && s[i-1] == 'I' {
+				res = res + 4
+				i = i - 2
+				continue
+			} else {
+				res = res + 5
+				i--
+				continue
+			}
+		}
+		if s[i] == 'X' {
+			if (i-1) >= 0 && s[i-1] == 'I' {
+				res = res + 9
+				i = i - 2
+				continue
+			} else {
+				res = res + 10
+				i--
+				continue
+			}
+		}
+		if s[i] == 'L' {
+			if (i-1) >= 0 && s[i-1] == 'X' {
+				res = res + 40
+				i = i - 2
+				continue
+			} else {
+				res = res + 50
+				i--
+				continue
+			}
+		}
+
+		if s[i] == 'C' {
+			if (i-1) >= 0 && s[i-1] == 'X' {
+				res = res + 90
+				i = i - 2
+				continue
+			} else {
+				res = res + 100
+				i--
+				continue
+			}
+		}
+
+		if s[i] == 'D' {
+			if (i-1) >= 0 && s[i-1] == 'C' {
+				res = res + 400
+				i = i - 2
+				continue
+			} else {
+				res = res + 500
+				i--
+				continue
+			}
+		}
+
+		if s[i] == 'M' {
+			if (i-1) >= 0 && s[i-1] == 'C' {
+				res = res + 900
+				i = i - 2
+				continue
+			} else {
+				res = res + 1000
+				i--
+				continue
+			}
+		}
+	}
+
+	return res
+}
+
+//
+
+//解法2 可以看下一位是否小于上一位 如果小于则做减法 速度81 内存99
+func romanToInt(s string) int {
+	res := 0
+	pre := 0
+	for i := len(s) - 1; i >= 0; i-- {
+		num := getValueByRoman(s[i])
+		if pre == 0 {
+			pre = num
+		} else {
+			pre = getValueByRoman(s[i+1])
+		}
+		if pre > num {
+			res -= num
+		} else {
+			res += num
+		}
+	}
+	return res
+}
+
+func getValueByRoman(romanChar byte) int {
+	switch romanChar {
+	case 'I':
+		return 1
+	case 'V':
+		return 5
+	case 'X':
+		return 10
+	case 'L':
+		return 50
+	case 'C':
+		return 100
+	case 'D':
+		return 500
+	case 'M':
+		return 1000
+	default:
+		return 0
+	}
 }
