@@ -41,11 +41,12 @@ func main() {
 	funcMap["#27"] = logic.TestRemoveElement
 	funcMap["#28"] = logic.TestStrStr
 	funcMap["#29"] = logic.TestDivide
+	funcMap["#30"] = logic.TestFindSubstring
 	//面试题
 	funcMap["*57_2"] = logic.TestFindContinuousSequence
 
 	//输入你想运行的测试题编号即可返回测试用例
-	testStr := "#29"
+	testStr := "#30"
 	fn, ok := funcMap[testStr]
 	if ok {
 		fn()
