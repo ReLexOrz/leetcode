@@ -17,7 +17,7 @@ import (
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-//TestThreeSumClosest 测试 #16盛最多水的容器
+//TestThreeSumClosest 测试 #16最接近的三数之和
 func TestThreeSumClosest() {
 	nums := []int{1, 2, 4, 8, 16, 32, 64, 128}
 	target := 82

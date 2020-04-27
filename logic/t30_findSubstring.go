@@ -32,22 +32,101 @@ import "fmt"
 
 //TestFindSubstring 测试 #30 串联所有单词的子串
 func TestFindSubstring() {
-	s := "barfoothefoobarman"
-	words := []string{"foo", "bar"}
-	fmt.Println("#29 TestDivide Input:")
+	s := "barfoofoobarthefoobarman"
+	words := []string{"bar", "foo", "the"}
+	fmt.Println("#30 TestFindSubstring Input:")
 	fmt.Println(s)
 	fmt.Println(words)
 	res := findSubstring(s, words)
-	fmt.Println("#29 TestDivide Res:")
+	fmt.Println("#30 TestFindSubstring Res:")
 	fmt.Println(res)
 }
 
+// func findSubstring2(s string, words []string) []int {
+// 	res := make([]int, 0)
+// 	if len(words) == 0 {
+// 		return res
+// 	}
+// 	//单字符串长度
+// 	wordLen := len(words[0])
+// 	twordLen := len(words) * wordLen
+// 	wordsMap := make(map[string]int, 0)
+// 	for i := 0; i < len(words); i++ {
+// 		wordsMap[words[i]] = 0
+// 	}
+// 	if len(s) < wordLen {
+// 		return res
+// 	}
+
+// 	for i, j := 0, wordLen; j <= len(s); {
+// 		subStr := s[i:j]
+// 		v, ok := wordsMap[subStr]
+// 		if ok && v == 0 {
+// 			wordsMap[subStr] = 1
+// 			for m, n := j, j+wordLen; ; {
+// 				v, ok := wordsMap[s[m:n]]
+// 				if !ok || v == 1 {
+// 					//ClearMapValue()
+// 					break
+// 				}
+// 				if v == 0 {
+
+// 				}
+// 			}
+// 		}
+// 		i++
+// 		j++
+// 	}
+// 	return res
+// }
+
+// func ClearMapValue(strMap map[string]int) {
+// 	//for
+// }
+
+//方法超时
 func findSubstring(s string, words []string) []int {
-
-	wordsMap := make(map[string]int, 0)
-	for i := 0; i < len(words); i++ {
-		wordsMap[words[i]] = 1
+	res := make([]int, 0)
+	if len(words) == 0 {
+		return res
 	}
+	//列出所有单词的组合
+	wordLen := len(words[0])
+	twordLen := len(words) * wordLen
+	numCombinList := GetAllNumCombineList(len(words) - 1)
+	strMap := make(map[string]int, 0)
+	for i := 0; i < len(numCombinList); i++ {
+		var subs string = ""
+		for j := 0; j < len(numCombinList[i]); j++ {
+			subs = subs + words[numCombinList[i][j]]
+		}
+		strMap[subs] = 1
+	}
+	//遍历字符串
+	for i := 0; i+twordLen <= len(s); i++ {
+		_, ok := strMap[s[i:i+twordLen]]
+		if ok {
+			res = append(res, i)
+		}
+	}
+	return res
+}
 
-	return nil
+func GetAllNumCombineList(maxNum int) [][]int {
+	if maxNum == 0 {
+		return [][]int{[]int{0}}
+	}
+	numCombinList := GetAllNumCombineList(maxNum - 1)
+	newCombinList := make([][]int, 0, 0)
+	for i := 0; i < len(numCombinList); i++ {
+		for j := 0; j < len(numCombinList[i]); j++ {
+			newList := make([]int, 0, 0)
+			newList = append(newList, numCombinList[i][:j]...)
+			newList = append(newList, maxNum)
+			newList = append(newList, numCombinList[i][j:]...)
+			newCombinList = append(newCombinList, newList)
+		}
+		newCombinList = append(newCombinList, append(numCombinList[i], maxNum))
+	}
+	return newCombinList
 }

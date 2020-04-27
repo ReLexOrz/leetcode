@@ -26,7 +26,7 @@ import (
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-//TestLetterCombinations 测试 #16盛最多水的容器
+//TestLetterCombinations 测试 #17电话号码的字母组合
 func TestLetterCombinations() {
 	digits := "23"
 	fmt.Println("#17 TestLetterCombinations Input:")
