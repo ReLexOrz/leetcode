@@ -42,11 +42,14 @@ func main() {
 	funcMap["#28"] = logic.TestStrStr                  //实现 strStr()
 	funcMap["#29"] = logic.TestDivide                  //两数相除
 	funcMap["#30"] = logic.TestFindSubstring           //串联所有单词的子串
+	funcMap["#61"] = logic.TestRotateRight             //旋转链表
+	funcMap["#138"] = logic.TestCopyRandomList         //复制带随机指针的链表
+
 	//面试题
 	funcMap["*57_2"] = logic.TestFindContinuousSequence
 
 	//输入你想运行的测试题编号即可返回测试用例
-	testStr := "#30"
+	testStr := "#61"
 	fn, ok := funcMap[testStr]
 	if ok {
 		fn()

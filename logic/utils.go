@@ -11,6 +11,13 @@ type ListNode struct {
 	Next *ListNode
 }
 
+//带有随机指针的链表单位结构
+type Node struct {
+	Val    int
+	Next   *Node
+	Random *Node
+}
+
 //PrintListNode 打印int单向列表
 func PrintListNode(ln *ListNode) {
 	//string := strconv.Itoa(int)
